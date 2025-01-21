@@ -7,3 +7,14 @@ ABubbleGameModeBase::ABubbleGameModeBase()
 {
 }
 
+void ABubbleGameModeBase::InitCardPool()
+{
+}
+
+void ABubbleGameModeBase::BeginPlay()
+{
+	Super::BeginPlay();
+
+	InitCardPool();
+}
+
