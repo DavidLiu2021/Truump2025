@@ -33,8 +33,14 @@ private:
 	UPROPERTY()
 	class UCheckPointWidget* CheckPointWidget;
 
+	UPROPERTY()
+	class UMainLevelWidget* MainLevelWidget;
+
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UUserWidget> CheckPointWidgetClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> MainLevelWidgetClass;
 
 	FTimerHandle ProgressTimerHandle;
 	float CurrentProgress;

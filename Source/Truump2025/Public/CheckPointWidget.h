@@ -16,8 +16,8 @@ class TRUUMP2025_API UCheckPointWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(meta = (BindWidget))
-	class UProgressBar* ProgressBar;
+	// UPROPERTY(meta = (BindWidget))
+	// class UProgressBar* ProgressBar;
 
 	UPROPERTY(meta = (BindWidget))
 	class UButton* ConfirmButton;
@@ -26,7 +26,7 @@ public:
 	TScriptInterface<ICheckPointInterface> CheckPointInterface;
 
 	virtual void NativeConstruct() override;
-	void UpdateProgressBar(float Progress);
+	/*void UpdateProgressBar(float Progress);*/
 
 private:
 	UFUNCTION()

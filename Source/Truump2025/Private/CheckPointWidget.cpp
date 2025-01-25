@@ -2,9 +2,7 @@
 
 
 #include "CheckPointWidget.h"
-
 #include "Components/Button.h"
-#include "Components/ProgressBar.h"
 
 void UCheckPointWidget::NativeConstruct()
 {
@@ -16,13 +14,13 @@ void UCheckPointWidget::NativeConstruct()
 	}
 }
 
-void UCheckPointWidget::UpdateProgressBar(float Progress)
+/*void UCheckPointWidget::UpdateProgressBar(float Progress)
 {
 	if (ProgressBar)
 	{
 		ProgressBar->SetPercent(Progress);
 	}
-}
+}*/
 
 void UCheckPointWidget::ConfirmButtonClicked()
 {
