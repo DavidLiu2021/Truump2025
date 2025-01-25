@@ -5,13 +5,14 @@
 #include "CoreMinimal.h"
 #include "CardData.h"
 #include "GameFramework/GameModeBase.h"
+#include "CheckPointInterface.h"
 #include "BubbleGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TRUUMP2025_API ABubbleGameModeBase : public AGameModeBase
+class TRUUMP2025_API ABubbleGameModeBase : public AGameModeBase, public ICheckPointInterface
 {
 	GENERATED_BODY()
 
@@ -25,6 +26,22 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+
+	virtual void OnConfirm() override;
+
+private:
+	UPROPERTY()
+	class UCheckPointWidget* CheckPointWidget;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> CheckPointWidgetClass;
+
+	FTimerHandle ProgressTimerHandle;
+	float CurrentProgress;
+	bool bIsCheckpointActive;
+
+	void UpdateProgress();
+	void ShowCheckPointUI();
 
 };
 
