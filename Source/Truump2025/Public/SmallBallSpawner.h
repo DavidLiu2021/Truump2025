@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "CardData.h"
 #include "SmallBallSpawner.generated.h"
 
 UCLASS()
@@ -34,5 +35,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Spawner Properties")
 	AActor* CentralBall;
+
+	UFUNCTION(BlueprintCallable, Category = "Card")
+	void ApplyCardEffect(const FCardData& CardData);
 
 };

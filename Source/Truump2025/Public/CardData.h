@@ -1,7 +1,17 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+// #include "SmallBallSpawner.h"
 #include "CardData.generated.h"
+
+UENUM(BlueprintType)
+enum class ECardEffectType : uint8
+{
+	ModifySpawnRate UMETA(DisplayName = "Modify Spawn Rate"),
+	ModifyMoveDirection UMETA(DisplayName = "Modify Move Direction"),
+	ModifyMoveSpeed UMETA(DisplayName = "Modify Move Speed"),
+	ModifyCD UMETA(DisplayName = "Modify card CD")
+};
 
 USTRUCT(BlueprintType)
 struct FCardData
@@ -17,10 +27,18 @@ struct FCardData
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Card")
 	int32 ColdDown;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Card")
+	ECardEffectType EffectType;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Card")
+	float EffectValue;
+
 	FCardData()
 		: CardName(TEXT("DefaultName"))
 		, CardImage(nullptr)
 		, ColdDown(3)
+		, EffectType(ECardEffectType::ModifySpawnRate)
+		, EffectValue(1.0f)
 	{
 		
 	}

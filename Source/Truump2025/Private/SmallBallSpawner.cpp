@@ -3,18 +3,17 @@
 
 #include "SmallBallSpawner.h"
 #include "SmallBallActor.h"
+#include "CardData.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "TimerManager.h"
 
 // Sets default values
 ASmallBallSpawner::ASmallBallSpawner()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-// Called when the game starts or when spawned
 void ASmallBallSpawner::BeginPlay()
 {
 	Super::BeginPlay();
@@ -22,11 +21,9 @@ void ASmallBallSpawner::BeginPlay()
 	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, this, &ASmallBallSpawner::SpawnBall, SpawnRate, true);
 }
 
-// Called every frame
 void ASmallBallSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void ASmallBallSpawner::SpawnBall()
@@ -76,5 +73,27 @@ FVector ASmallBallSpawner::GetRandomPosition(bool bSpawnFromCenter)
 	}
 
 	return SpawnLocation;
+}
+
+void ASmallBallSpawner::ApplyCardEffect(const FCardData& CardData)
+{
+	switch (CardData.EffectType)
+	{
+	case ECardEffectType::ModifySpawnRate:
+		SpawnRate *= CardData.EffectValue;
+		break;
+
+	case ECardEffectType::ModifyMoveDirection:
+		// DirectionModifier *= CardData.EffectValue; // Assuming DirectionModifier is FVector
+		break;
+
+	case ECardEffectType::ModifyMoveSpeed:
+		// MoveSpeed *= CardData.EffectValue;
+		break;
+
+	default:
+		UE_LOG(LogTemp, Warning, TEXT("Unknown card effect type"));
+		break;
+	}
 }
 
