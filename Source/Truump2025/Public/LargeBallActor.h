@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "LargeBallActor.generated.h"
 
+class USphereComponent;
+
 UCLASS()
 class TRUUMP2025_API ALargeBallActor : public AActor
 {
@@ -35,5 +37,13 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Ball Properties")
 	FVector InitialScale;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	USphereComponent* CollisionComponent;
+
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
+						UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, 
+						bool bFromSweep, const FHitResult& SweepResult);
 
 };

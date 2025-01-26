@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "SmallBallActor.generated.h"
 
+ class USphereComponent;
+
 UCLASS()
 class TRUUMP2025_API ASmallBallActor : public AActor
 {
@@ -26,14 +28,21 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Ball Properties")
 	float MoveSpeed = 200.0f;
 
-	/*UFUNCTION()
-	void OnClicked(AActor* ClickedActor);*/
+	UFUNCTION()
+	void OnClicked(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
 
 	/*UFUNCTION()
 	void OnHit(AActor* OtherActor);*/
 
-private:
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 	UFUNCTION()
 	void MoveBall(float DeltaTime);
+
+private:
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	USphereComponent* CollisionComponent;
 
 };
