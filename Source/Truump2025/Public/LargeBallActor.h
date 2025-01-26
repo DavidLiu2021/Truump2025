@@ -33,7 +33,7 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Ball Properties")
-	float SizeMultiplier = 1.0f;
+	float SizeMultiplier = 0.2f;
 
 	UPROPERTY(EditAnywhere, Category = "Ball Properties")
 	FVector InitialScale;
