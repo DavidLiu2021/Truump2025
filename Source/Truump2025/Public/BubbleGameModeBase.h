@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "CardData.h"
+#include "CardDataManager.h"
 #include "GameFramework/GameModeBase.h"
 #include "CheckPointInterface.h"
 #include "BubbleGameModeBase.generated.h"
@@ -19,8 +20,11 @@ class TRUUMP2025_API ABubbleGameModeBase : public AGameModeBase, public ICheckPo
 public:
 	ABubbleGameModeBase();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Card Pool")
-	TArray<FCardData> CardPool;
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Card Pool")
+	TArray<FCardData> CardPool;*/
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Card")
+	UCardDataManager* CardDataManager;
 
 	virtual void InitCardPool();
 

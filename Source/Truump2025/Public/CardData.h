@@ -33,6 +33,7 @@ struct FCardData
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Card")
 	float EffectValue;
 
+	// default card
 	FCardData()
 		: CardName(TEXT("DefaultName"))
 		, CardImage(nullptr)
@@ -41,6 +42,15 @@ struct FCardData
 		, EffectValue(1.0f)
 	{
 		
+	}
+
+	FCardData(const FString& InName, UTexture2D* InImage, int32 InColdDown, ECardEffectType InEffectType, float InEffectValue)
+		: CardName(InName)
+		, CardImage(InImage)
+		, ColdDown(InColdDown)
+		, EffectType(InEffectType)
+		, EffectValue(InEffectValue)
+	{
 	}
 	
 };
