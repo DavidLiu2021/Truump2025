@@ -20,9 +20,6 @@ class TRUUMP2025_API ABubbleGameModeBase : public AGameModeBase, public ICheckPo
 public:
 	ABubbleGameModeBase();
 
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Card Pool")
-	TArray<FCardData> CardPool;*/
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Card")
 	UCardDataManager* CardDataManager;
 
@@ -45,6 +42,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UUserWidget> MainLevelWidgetClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> CardSelectionWidgetClass;
 
 	FTimerHandle ProgressTimerHandle;
 	float CurrentProgress;
